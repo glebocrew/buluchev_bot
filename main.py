@@ -37,7 +37,7 @@ def start(message):
     bot.send_message(message.chat.id, text=f"Здравствуйте, коллега под номером {message.chat.id}. Я не буду запоминать ваши имена. Не по тому что мне лень, а потому что это будет нечестно проверять контрольные работы.")
     with open("chats.txt", "r+", encoding="utf-8") as file:
         readed = file.read().split(sep="\n")
-        print(readed)
+        # print(readed)
         if not str(message.chat.id) in readed:
             file.write(f"{message.chat.id}\n")
 
@@ -63,11 +63,11 @@ def send(message):
             
 @bot.message_handler()
 def render_text(message):
-    print(message.text.lower())
+    # print(message.text.lower())
     for word in message.text.lower().split(sep=" "):
         # print(word)
         if word == "подправим":
-            print(message.message_id)
+            # print(message.message_id)
             bot.send_message(message.chat.id, "Подправим чуть чуть")
             for id in range(message.message_id, message.message_id - 100, -1):
                 try:
@@ -81,8 +81,8 @@ def render_text(message):
                     bot.send_photo(message.chat.id, images[phraze]["img"], caption=images[phraze]["phr"])
                     # print(error)
                     # raise error  
-                    print(one, phraze, word)
-                    print(images[phraze]["phr"])    
+                    # print(one, phraze, word)
+                    # print(images[phraze]["phr"])    
                     break           
 
 
